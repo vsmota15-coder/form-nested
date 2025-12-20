@@ -1,0 +1,24 @@
+<h1>Clientes</h1>
+<%= link_to "Adicionar Cliente", new_customer_path, class: "btn-add" %>
+
+<% @customers.each do |customer| %>
+   <table class="customers-table"> 
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.address&.street %>, <%= customer.address&.number %>, <%= customer.address&.city %></td>
+        <td class="actions">
+            <%= link_to "Editar", edit_customer_path(customer), class: "btn-action edit"%>
+            <%= button_to "Deletar", customer_path(customer), method: :delete, data: {turbo_confirm: "Tem certeza que deseja deletar este cliente?" }, class: "btn-action delete"%>
+      </tr>
+    </tbody>
+   </table>
+<% end %> 

@@ -1,0 +1,21 @@
+ <%= form_with model: @customer do |form| %>
+  <%= form.label :name  %>
+  <%= form.text_field :name %>
+
+  <%= form.label :phone  %>
+  <%= form.text_field :phone %>
+
+  <%= form.fields_for :address do |address_form| %>
+     <%= address_form.label :street%>
+     <%= address_form.text_field :street%>
+
+      <%= address_form.label :number%>
+      <%= address_form.text_field :number%>
+
+       <%= address_form.label :city%>
+       <%= address_form.text_field :city%>
+  <%end%>
+
+
+  <%= form.submit "Criar" %>
+<% end %>
